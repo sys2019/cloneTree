@@ -1,6 +1,9 @@
 package main;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class CliParam {
 	
@@ -97,8 +100,13 @@ public class CliParam {
 			else if(param.equals("-std")) {
 				std_flag = true;
 			}
+			else if(param.equals("-h")) {
+				showHelp();
+				effective = false;
+			}
 			else {
 				System.err.println("Unkown param: " + args[i]);
+				showHelp();
 				effective = false;
 			}
 		}
@@ -154,6 +162,19 @@ public class CliParam {
 	
 	public double getDb_p() {
 		return db_p;
+	}
+	
+	private void showHelp(){
+		File fi = new File("help");
+		BufferedReader reader = null;
+		try {
+			reader = new BufferedReader(new FileReader(fi));
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				System.out.println(line);
+			}
+		} catch (IOException e){
+		}
 	}
 	
 	public boolean checkParam(){

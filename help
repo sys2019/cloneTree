@@ -1,0 +1,14 @@
+Usage:
+	-i [String] input file. Requires a matrix of ccf values. Its first column are names of samples. Its last column are genes of the sample(they should be split by ',' if more than one). Left columns are grouped each 3 columns, the first is the tag of the ccf value, second one should be lower bound of the tag, and last one should be upper bound of this one.
+	-o [String] output directory. The path you want see your result.
+	-s [String] sample name. Name of this whole sample.(Default is "Default").
+	-mclu [String] [A/D/H/K]the method of clustering. A for All, D for DBScan, H for Hierarchical Clustering, K for KMeans.(Default is D)
+	-n [int] times of building the clone tree.(Default is 1000)
+	-bootc [double] [0.0~1.0] maximal clusters can be ignored in once building an examining tree.
+	-boots [double] [0.0~1.0] maximal samples in a cluster can be ignored in once building an examining tree.
+For DBScan:
+	-dbm [int] minimal points for a cluster. value bigger than 1 may lost some samples in result.(Default is 1)
+	-dbp [double] maximal radius for getting into a cluster each pair of points.(Default is 0.05)
+For KMeans,Hierarchical Clustering:
+	-nclu [int] number of clusters you want.(Default is depending on the tags in your input file)
+	
